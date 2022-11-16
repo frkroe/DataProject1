@@ -9,10 +9,7 @@ Fuentes:
 - [Productos de IKEA](https://www.kaggle.com/datasets/ahmedkallam/ikea-sa-furniture-web-scraping)
 - [API para los clientes](https://randomuser.me/api)
 - [Ciudades de Arabia Saudita](https://en.wikipedia.org/wiki/List_of_cities_and_towns_in_Saudi_Arabia)
-
-# HAY QUE ELEGIR
-- [Top 200 Influencers](https://www.kaggle.com/datasets/surajjha101/top-instagram-influencers-data-cleaned)
-- [Alternativa de 200 instas](https://www.kaggle.com/datasets/syedjaferk/top-200-instagrammers-data-cleaned?select=top_200_instagrammers.csv)
+- [Top 200 Influencers](https://www.kaggle.com/datasets/syedjaferk/top-200-instagrammers-data-cleaned?select=top_200_instagrammers.csv)
 
 
 ## Pasos que hicimos (según 1° Fase tradicional)
