@@ -1,5 +1,6 @@
 # Importaciones
 import pandas as pd
+import numpy as np
 import os  
 
 # Leer los datos
@@ -13,7 +14,6 @@ extractCol = df[["Username", "Followers", "Likes Avg."]]
 idList = list()
 for i in range(1,201):
     idList.append(i)
-    i += 1
 extractCol["influencer_id"] = idList
 #print(extractCol)
 
@@ -21,22 +21,25 @@ extractCol["influencer_id"] = idList
 extractCol["weights"] = extractCol["Likes Avg."]*0.6 + extractCol["Followers"]*0.4
 extractCol = extractCol.sort_values(by="weights", ascending=True)
 extractCol["cumSum"] = extractCol["weights"].cumsum()/extractCol["weights"].sum()*100
-#print(extractCol)
 
-
-def categorise(row):
-    if row["cumSum"] <= 25:
-        return 0.01
-    elif row["CumSum"] > 25 and row["cumSum"] <= 50:
-        return 0.02
-    elif row["cumSum"] > 50 and row["cumSum"] <= 75:
-        return 0.03
+# Calcular la comisión:
+lista = list()
+for fila in extractCol["cumSum"]:
+    if fila < 25:
+        lista.append(0.1)
+    elif fila >= 25 and fila < 50:
+        lista.append(0.2)
+    elif fila >= 50 and fila < 75:
+        lista.append(0.3)
     else:
-        return 0.05
+        lista.append(0.5)
+#print(lista)
+extractCol["Commission"] = lista
+#print(extractCol)     
 
-extractCol["commission"] = extractCol.apply(lambda row: categorise(row), axis=1)
-print(extractCol)
+# Limpir el dataframe:
+influencer = extractCol[["influencer_id", "Username", "Followers", "Likes Avg.", "Commission"]]
 
 # Crear csv's en un nuevo directorio
-#os.makedirs('../DatosLimpios', exist_ok=True)  
-#extractCol.to_csv('../DatosLimpios/influencer.csv')  
+os.makedirs('../DatosLimpios', exist_ok=True)  
+influencer.to_csv('../DatosLimpios/influencer.csv')  
