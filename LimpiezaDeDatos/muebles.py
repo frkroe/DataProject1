@@ -1,19 +1,23 @@
-# Importaciones
-import pandas as pd
-import os  
 
-# Leer los datos
-df = pd.read_csv('../Datos/productos.csv')
-#print(df)
+def muebles():
+    # Importaciones
+    import pandas as pd
+    import os  
 
-# Extraer columnas
-extractCol = df[["item_id", "name", "category", "price", "sellable_online", "link"]]
+    # Leer los datos
+    df = pd.read_csv('../Datos/productos.csv')
+    #print(df)
 
-# Limpiar filas: que solo se vendan online
-extractRow = extractCol[extractCol["sellable_online"]== True]
-muebles = extractRow[["item_id", "name", "category", "price", "link"]]
-#print(muebles)
+    # Extraer columnas
+    extractCol = df[["item_id", "name", "category", "price", "sellable_online", "link"]]
 
-# Crear csv's en un nuevo directorio
-os.makedirs('../DatosLimpios', exist_ok=True)  
-muebles.to_csv('../DatosLimpios/muebles.csv')  
+    # Limpiar filas: que solo se vendan online
+    extractRow = extractCol[extractCol["sellable_online"]== True]
+    muebles = extractRow[["item_id", "name", "category", "price", "link"]]
+    #print(muebles)
+
+    # Crear csv's en un nuevo directorio
+    os.makedirs('../DatosLimpios', exist_ok=True)  
+    muebles.to_csv('../DatosLimpios/muebles.csv')  
+
+muebles()
