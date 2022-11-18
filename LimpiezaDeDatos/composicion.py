@@ -1,9 +1,11 @@
 import pandas as pd
 import random
+import time
 
 # Extraer datos de muebles y influencers:
 df1 = pd.read_csv('../DatosLimpios/muebles.csv', usecols=["item_id", "category"])
 df2 = pd.read_csv('../DatosLimpios/influencer.csv', usecols=["influencer_id"])
+influencer_id = df2["influencer_id"].tolist()
 #print(df1, df2)
 
 '''listaMuebles = df1["item_id"].tolist()
@@ -29,41 +31,37 @@ for x in range(1,601):
     compLista.append(x)
 #print(compLista)
 
-# crear nuevos dicts que solo llevan 3/4/5 elementos en lista como valor; 17 categorías: 
+# crear nuevos dicts que solo llevan min-max elementos en lista como valor:
+# crear lista de tuplas (tupla: ([listamuebles], "cat"))
+pairs = [(v, k) for (k, v) in dictCat.items()]
+#print(pairs)
 
-# Crear lista con "num" valores --> serán las claves del dictParte
-## num = el número de composiciones de cada categoría
-listaClave = list()
-num = 12
-for cat, lista in dictCat.items():
-    listaClave.extend([cat for i in range(num)])
-#print(len(listaClave))
+# Crear Dictionario con categorías como clave y lista de varias elementos aleatorios (cantidad tb aleatoria)
+#listaCSV = list()
+minItems = 3
+maxItems = 5
+dictCom = dict()
+#for tupla in pairs:
+    #dictCom[tupla[1]] = [random.sample(tupla[0], random.choice(range(minItems, maxItems+1)))]
+    #listaCSV = [random.choice(tupla), random.sample(tupla[0], random.choice(range(minItems, maxItems+1)))]
+#print(dictCom)
+    
+#listaCSV = [random.choice(pairs[random.choic]), random.sample(tupla[0], random.choice(range(minItems, maxItems+1)))]
 
-# Crear num*17 listas que llevan 3/4/5 elementos=item_ids --> crear una lista de estas listas
-listaItems = list()
-list = list()
+# Crear lista aleatoria que lleva: categoria y sus elementos
+while True:
+    randomTupla = random.choice(pairs)
+    listaCSV = [id(randomTupla), random.choice(influencer_id), random.sample(randomTupla[0], random.choice(range(minItems, maxItems+1)))]
+    print(listaCSV)
 
-# Dict de composiones solo con claves sin valores
-dictComp = dict()
-dictComp.fromkeys(listaClave)
-print(dictComp)
+## hasta aqui bien
+    with open(../DatosLimpios/composicion.csv, mode, encoding='UTF8') as f:
+        w = csv.DictWriter(f, datos.keys())
+        # If file doesn't exist, create header
+        if f.tell() == 0:
+            w.writeheader()
 
-for clave, valor in dictCat.items():
-    dictComp[clave]= list.extend([random.sample(valor, 3) for i in range(num)])
-print(dictComp)
-'''for elemento in dictCat["Children's furniture"]:
-    dict["Children's furniture"]= list.extend([random.choice(elemento, 3) for i in range(num)]) 
-print(dict)'''
-
-"""for cat in dictCat.items():
-    for i in range(num):
-        for lista in cat:
-            list.extend([random.sample(lista, 3)]) 
-            listaItems.append(list)
-print(listaItems)"""
-#print(dictCat["Children's furniture"])
-"""
-for cat, list in dictCat:
-    listComp = random.sample(list, 3)
-    """
+        # write the data
+        w.writerow(datos)
+    time.sleep(5)
 
