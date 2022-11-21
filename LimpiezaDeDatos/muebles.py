@@ -20,26 +20,5 @@ def muebles():
     os.makedirs('../DatosLimpios', exist_ok=True)  
     muebles.to_csv('../DatosLimpios/muebles.csv')  
 
-    df2 = pd.read_csv('../DatosLimpios/muebles.csv')  
-
-    df2 = df2.replace("category", "cat_id")
-    df2 = df2.replace("Bar furniture", "001barf")
-    df2 = df2.replace("Beds", "002beds")
-    df2 = df2.replace("Bookcases & shelving units", "003book")
-    df2 = df2.replace("Cabinets & cupboards", "004cabi")
-    df2 = df2.replace("Café furniture", "005café")
-    df2 = df2.replace("Chairs", "006chai")
-    df2 = df2.replace("Chests of srawers & drawer units", "007ches")
-    df2 = df2.replace("Childrens furniture", "008chil")
-    df2 = df2.replace("Nursery furniture", "009nurs")
-    df2 = df2.replace("Outdoor furniture", "010outd")
-    df2 = df2.replace("Room dividers", "011room")
-    df2 = df2.replace("Sideboards, buffets & console tables", "012side")
-    df2 = df2.replace("Sofas & armchairs", "013sofa")
-    df2 = df2.replace("Tables & desks", "014tabl")
-    df2 = df2.replace("Trolleys", "015trol")
-    df2 = df2.replace("Tv & media furniture", "016tvme")
-    df2 = df2.replace("Wardrobes", "017ward")
-
-
+   
 muebles()
