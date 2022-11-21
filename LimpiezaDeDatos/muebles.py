@@ -20,6 +20,8 @@ def muebles():
     os.makedirs('../DatosLimpios', exist_ok=True)  
     muebles.to_csv('../DatosLimpios/muebles.csv')  
 
+    df2 = pd.read_csv('../DatosLimpios/muebles.csv')  
+
     df2 = df2.replace("category", "cat_id")
     df2 = df2.replace("Bar furniture", "001barf")
     df2 = df2.replace("Beds", "002beds")
