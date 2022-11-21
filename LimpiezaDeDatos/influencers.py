@@ -38,7 +38,7 @@ extractCol["Commission"] = lista
 
 # Limpir el dataframe:
 influencer = extractCol[["influencer_id", "Username", "Followers", "Likes Avg.", "Commission"]]
-
+print(influencer)
 # Crear csv's en un nuevo directorio
 os.makedirs('../DatosLimpios', exist_ok=True)  
-influencer.to_csv('../DatosLimpios/influencer.csv')  
+influencer.to_csv('../DatosLimpios/influencer.csv', index=False)  

@@ -41,8 +41,8 @@ for i in range(n):
         datosjson = respuesta.json()
         datos = {"cliente_id":id(datosjson), "name":datosjson["results"][0]["name"]["first"], "gender": datosjson["results"][0]["gender"], "age":datosjson["results"][0]["dob"]["age"], "city": random.choice(listCities)}
         #print(datos)
-
-      # Writing words as a list of key, value in a csv file in every row
+        
+      # de momento, guardalos en csv:
         with open('../DatosLimpios/clientes.csv', 'a', newline='', encoding='UTF8') as f:
             w = csv.DictWriter(f, datos.keys())
             w.writerow(datos)
