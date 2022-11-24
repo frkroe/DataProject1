@@ -20,4 +20,5 @@ def muebles():
     os.makedirs('../DatosLimpios', exist_ok=True)  
     muebles.to_csv('../DatosLimpios/muebles.csv')  
 
+   
 muebles()
