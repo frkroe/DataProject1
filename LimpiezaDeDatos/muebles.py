@@ -21,6 +21,7 @@ def muebles():
     os.makedirs('../DatosLimpios', exist_ok=True)  
     muebles.to_csv('../DatosLimpios/muebles/muebles.csv')  
 
+<<<<<<< Updated upstream
     items = pd.read_csv('../DatosLimpios/muebles/muebles.csv', index_col=0).to_dict()
     key, value = "cat_id", []
     items[key] = value
@@ -40,3 +41,8 @@ def muebles():
     merged.to_csv("../DatosLimpios/cat_muebles.csv",index=False)
 
 muebles()
+=======
+
+   
+muebles()
+>>>>>>> Stashed changes
