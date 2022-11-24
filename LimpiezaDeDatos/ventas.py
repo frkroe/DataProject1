@@ -1,13 +1,22 @@
-# columnas: id_venta, id_cliente, composicion_id (que esta relacionado con id_influencer, id_item), cantidad, fecha
+def ventas():
+    # Importaciones
+    from rawdata.clientes import clientes
+    from rawdata.muebles import muebles
+    import pandas as pd
+    import random
+    import time
+    from datetime import datetime
 
+    list_clienteId = clientes()["cliente_id"].to_list()
+    list_muebleId = muebles()["item_id"].to_list()
+    #print(list_clienteId,list_muebleId)
 
-#PASOS QUE HACER
-
-# 1. conectar con base de datos
-# 2. Extraer los datos (id_cliente, id_composicion) de las tablas cliente y composicion de la base de datos
-
-## dataframe de id_cliente --> crear lista de id_cliente: df.tolist()
-## dataframe de id_composicion: crear dict de id_comp: listaComp = [[comp_id, influencer_id, [lista_items]], ...]
-
-# 1. selecionar random lista[random lista] --> guardarlo como variable (comp. elegida)
-# 2. selecionar random cantidad lista(item_ids): random.choice(listaitems) --> guardarlo como lista
+    n = int(input("Dime el número de ventas: "))
+    minq = 1
+    maxq = 5
+    df_ventas = pd.DataFrame()
+    for i in range(n+1):
+        fila = {"sales_id": id(i),"cliente_id":random.choice(list_clienteId), "item_id":random.choice(list_muebleId), "date": datetime.now(), "quantity": random.randrange(minq, maxq+1)}
+        df_ventas = df_ventas.append(fila, ignore_index=True)
+        time.sleep(2)
+    #print(df_ventas)
