@@ -4,7 +4,7 @@ def influencer():
     import os  
 
     # Leer los datos
-    df = pd.read_csv('../Datos/instagrammers.csv')
+    df = pd.read_csv('Datos/instagrammers.csv')
     #print(df)
 
     # Extraer columnas
@@ -12,7 +12,8 @@ def influencer():
 
     # Añadir influencer_id
     idList = list()
-    for i in range(1,201):
+    for i in range(1,1+len(extractCol["Username"])):
+    #for i in range(1,201):
         idList.append(i)
     extractCol["influencer_id"] = idList
     #print(extractCol)
@@ -40,8 +41,7 @@ def influencer():
     # Limpir el dataframe:
     df_influencer = extractCol[["influencer_id", "Username", "Followers", "Likes Avg.", "Commission"]]
     #print(df_influencer)
-    return df_influencer
-    
     # Crear csv's en un nuevo directorio
-    #os.makedirs('../DatosLimpios', exist_ok=True)  
-    #influencer.to_csv('../DatosLimpios/influencer.csv', index=False)  
+    #os.makedirs('.DatosLimpios', exist_ok=True)  
+    #influencer.to_csv('DatosLimpios/influencer.csv', index=False)
+    return df_influencer

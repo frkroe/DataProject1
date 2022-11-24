@@ -1,13 +1,11 @@
-def composicion():
-    from rawdata.influencers import influencer
-    from comp_mueble import listaCompId
+def composicion(df_influencer):
+    from LimpiezaDeDatos.comp_mueble import listaCompId
     import pandas as pd
     import random
     #import os
 
     # Extraer datos de influencers:
     #df = pd.read_csv('../DatosLimpios/influencer.csv', usecols=["influencer_id"])
-    df_influencer = influencer()
     influencer_id = df_influencer["influencer_id"].tolist()
 
     # Elegir aleatoriamente x influencers:

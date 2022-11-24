@@ -1,17 +1,10 @@
-def compMueble():
-    from rawdata.muebles import muebles
-    #from composicion import composicion
+def compMueble(df_muebles, numCompCat, minItems, maxItems):
     import pandas as pd
     import random
     #import os
 
     # Extraer datos de muebles y composicion:
         #### aniadir csv de categoria_id
-    df_muebles = muebles()
-    #df_composicion = composicion()
-    #print(df_muebles)
-    #composicion_id = df_composicion["composicion_id"].tolist()
-    #print(composicion_id)
     df_compCat = df_muebles.groupby('category')['item_id'].apply(list).reset_index(name='list_items')
     #print(df_compCat)
 
@@ -19,9 +12,9 @@ def compMueble():
     #df_composicion = pd.read_csv('../DatosLimpios/composicion.csv', usecols=["composicion_id"])
 
     # Crear [numCompCat] composiciones por cada categoría (crear su id, y lista de muebles [min-max] aleatoria guardando en un dict):
-    numCompCat = 10
-    minItems = 3
-    maxItems = 5
+    #numCompCat = 10
+    #minItems = 3
+    #maxItems = 5
     dictCompListaItems = dict()
     global listaCompId
     listaCompId = list()
@@ -41,6 +34,6 @@ def compMueble():
             df_compMueble = df_compMueble.append({"composicion_id": k, "item_id":i[1]}, ignore_index=True)
     #print(df_compMueble)
     # Crear csv para probar crear dashboards in Tableau
-    #os.makedirs('../DatosLimpios', exist_ok=True)  
-    #df_compMueble.to_csv('../DatosLimpios/comp_muebles.csv', index=False)   
+    #os.makedirs('DatosLimpios', exist_ok=True)  
+    #df_compMueble.to_csv('DatosLimpios/comp_muebles.csv', index=False)   
     return df_compMueble

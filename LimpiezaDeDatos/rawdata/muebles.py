@@ -5,7 +5,7 @@ def muebles():
     #import os  
 
     # Leer los datos
-    df = pd.read_csv('../Datos/productos.csv', index_col=[0])
+    df = pd.read_csv('Datos/productos.csv', index_col=[0])
     #print(df)
 
     # Extraer columnas y Limpiar filas: que solo se vendan online
@@ -14,6 +14,6 @@ def muebles():
     df_muebles = extractRow[["item_id", "name", "category", "price", "link"]]
     #print(muebles)
     # Crear csv's en un nuevo directorio
-    #os.makedirs('../DatosLimpios', exist_ok=True)  
-    #muebles.to_csv('../DatosLimpios/muebles.csv')  
+    #os.makedirs('DatosLimpios', exist_ok=True)  
+    #muebles.to_csv('DatosLimpios/muebles.csv')  
     return df_muebles
