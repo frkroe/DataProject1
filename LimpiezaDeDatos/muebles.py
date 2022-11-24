@@ -18,7 +18,18 @@ def muebles():
     #print(muebles)
 
     # Crear csv's en un nuevo directorio
-    os.makedirs('../DatosLimpios', exist_ok=True)  
+    os.makedirs('../DatosLimpios/muebles', exist_ok=True)  
     muebles.to_csv('../DatosLimpios/muebles/muebles.csv')  
+
+    # Reemplaza los valores de tipo str por valores int(item_id) o float(price) según el caso
+    df =  pd.read_csv('../DatosLimpios/muebles/muebles.csv')
+    n = len(df['item_id'])
+    for i in range(n):
+        a = df['item_id'][i]
+        b = int(a)
+        c = df['price'][i]
+        d = float(c)
+        df.replace({a : b, c : d})
+
    
 muebles()
