@@ -1,8 +1,9 @@
 # crear dataset de clientes
-import requests
+import pandas as pd
 import time
 import random
 import csv
+import requests
 
 # función para crear csv
 def writeData(path, mode, datos):
@@ -46,3 +47,11 @@ for i in range(n):
         with open('../DatosLimpios/clientes.csv', 'a', newline='', encoding='UTF8') as f:
             w = csv.DictWriter(f, datos.keys())
             w.writerow(datos)
+
+    # Reemplaza los valores de tipo str por valores int(cliente_id)
+    df =  pd.read_csv('../DatosLimpios/clientes.csv')
+    n = len(df['cliente_id'])
+    for i in range(n):
+        a = df['cliente_id'][i]
+        b = int(a)
+        df.replace({a : b})
