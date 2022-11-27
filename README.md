@@ -4,6 +4,11 @@
 ....
 
 
+STILL TO TO-DO:
+- CHECK VARIABLE NAMES -- ALL IN ENGLISH; SPELLING CHECKS IN PYTHON AND POSTGRES
+- CHECK ID --> SAME ID FOR SAME VALUES (SO NOT UNIQUE; METHOD NEEDS TO BE CHANGED)
+- DOCKERFILE FOR PYTHON? TO BE ADDED IN DOCKER-COMPOSE?
+
 ## Datos
 Fuentes:
 - [Productos de IKEA](https://www.kaggle.com/datasets/ahmedkallam/ikea-sa-furniture-web-scraping)
