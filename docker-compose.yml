@@ -1,13 +1,25 @@
 version: '3.5'
 
 services:
+  srv-python:
+    build: ./python
+  
+    volumes:
+       - ikea:/python/results/
+  
+  postgres:
+    build: ./postgres
+  
+    volumes:
+       - ikea:/postgres/
+
   postgres:
     container_name: postgres_container
     image: postgres:12.1
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ikea2022}
-      POSTGRESDB: ikea2022
+      POSTGRES_DB: ikea2022
       PGDATA: /data/postgres
     
     volumes:
@@ -46,5 +58,6 @@ networks:
     driver: bridge
 
 volumes:
+  ikea:
   postgres:
   pgadmin:

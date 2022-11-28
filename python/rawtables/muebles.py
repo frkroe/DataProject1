@@ -3,7 +3,7 @@ def muebles():
     import pandas as pd
 
     #leemos los datos
-    df_muebles_all = pd.read_csv('../rawdata/productos.csv', index_col=[0])
+    df_muebles_all = pd.read_csv('rawdata/productos.csv', index_col=[0])
     #print(df)
 
     #limpiamos filas (por productos que solo se vendan online)
@@ -17,6 +17,8 @@ def muebles():
 
     #creamos los dataframes muebles y category solo con las columnas necesarias (extraemos columnas)
     df_muebles = df_muebles_all.loc[:, ["item_id", "name", "category_id", "price", "link"]]
+    df_muebles = df_muebles.rename(columns={"item_id":"product_id", "name":"product_name"})
     df_category = df_muebles_all.loc[:, ["category_id", "category"]].drop_duplicates().sort_values(by="category_id")
+    df_category["category"] = df_category["category"].str.replace("'","")
     #print(df_muebles, df_category)
     return df_muebles, df_category

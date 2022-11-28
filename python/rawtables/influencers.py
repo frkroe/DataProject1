@@ -3,7 +3,7 @@ def influencer():
     import pandas as pd
 
     #leemos los datos
-    df_influencer = pd.read_csv('../rawdata/instagrammers.csv')
+    df_influencer = pd.read_csv('rawdata/instagrammers.csv')
     #print(df_influencer)
 
     #añadimos influencer_id
@@ -33,6 +33,7 @@ def influencer():
     #print(df_influencer)     
 
     #limpiamos el dataframe (extraemos las columnas)
-    df_influencer = df_influencer.loc[:,["influencer_id", "Username", "Followers", "Likes Avg.", "Commission"]]
+    df_influencer = df_influencer.loc[:,["influencer_id", "Username", "Commission"]]
+    df_influencer = df_influencer.rename(columns={"Username": "influencer_name", "Commission":"commission"})
     #print(df_influencer)
     return df_influencer

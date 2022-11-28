@@ -42,6 +42,7 @@ df_composicion.to_csv('results/composicion.csv', index=False)
 df_clientes = clientes(n)
 df_ventas = ventas(v, df_muebles, df_clientes, minq, maxq)
 
+#comprobamos los dataframes
 '''print(f"""
 {df_muebles}
 ************
@@ -58,8 +59,8 @@ df_ventas = ventas(v, df_muebles, df_clientes, minq, maxq)
 {df_ventas}
 """)'''
 
-#confirmamos los tipos de datos
-print(f"""
+#comprobamos los tipos de datos
+'''print(f"""
 {df_muebles.dtypes}
 ************
 {df_category.dtypes}
@@ -73,4 +74,4 @@ print(f"""
 {df_composicion.dtypes}
 ************
 {df_ventas.dtypes}
-""")
+""")'''

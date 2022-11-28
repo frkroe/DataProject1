@@ -13,7 +13,7 @@ def composicion(df_influencer):
     #print(listaInfl)
 
     #creamos el dataframe
-    dict = {"composicion_id": listaCompId, "influencer_id": listaInfl}
+    dict = {"composition_id": listaCompId, "influencer_id": listaInfl}
     df_composicion = pd.DataFrame(dict)
     #print(df_composicion)
     return df_composicion
