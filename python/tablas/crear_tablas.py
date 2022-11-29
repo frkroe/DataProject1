@@ -56,6 +56,7 @@ def crear():
         "sales_id BIGINT PRIMARY KEY NOT NULL,"
         "customer_id BIGINT NOT NULL,"
         "product_id INT NOT NULL,"
+        "composition_id INT NOT NULL,"
         "date TIMESTAMP NOT NULL,"
         "quantity INT NOT NULL)")
 

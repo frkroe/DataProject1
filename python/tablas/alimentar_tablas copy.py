@@ -3,13 +3,14 @@ def alimentar():
     import csv
 
     #realizamos la conexion al servidor de localhost y la base de datos ikea en postgres
-    connection = psycopg2.connect(host='localhost', dbname="ikea2022", user="postgres", password="ikea2022")
+    connection = psycopg2.connect(host="postgres", dbname="ikea2022", user="postgres", password="ikea2022")
     #definimos un objeto de acceso a datos
     mycursor = connection.cursor()
 
     #definimos la funcion que alimenta la tabla clientes
     def insert_clientes():
-        with open('../python/results/clientes.csv', newline='',  encoding="utf8") as csvfile:
+    
+        with open('results/clientes.csv', newline='',  encoding="utf8") as csvfile:
             spamreader = csv.reader(csvfile)
             for row in spamreader:
                 # Preparamos la query de SQL query para insertar dattos en la base de datos
@@ -30,7 +31,7 @@ def alimentar():
 
     #definimos la funcion que alimenta la tabla influencers
     def insert_influencers():
-        with open('../python/results/influencer.csv', newline='',  encoding="utf8") as csvfile:
+        with open('results/influencer.csv', newline='',  encoding="utf8") as csvfile:
             spamreader = csv.reader(csvfile)
             for row in spamreader:
                 sql = "INSERT INTO influencers (influencer_id, influencer_name, commission) VALUES ('%s', '%s', '%s');" % (row[0], row[1], row[2])
@@ -45,7 +46,7 @@ def alimentar():
 
     #definimos la funcion que alimenta la tabla categoria
     def insert_categoria():
-        with open('../python/results/category.csv', newline='',  encoding="utf8") as csvfile:
+        with open('results/category.csv', newline='',  encoding="utf8") as csvfile:
             spamreader = csv.reader(csvfile)
             for row in spamreader:
                 sql = "INSERT INTO categoria (category_id, category_name) VALUES ('%s', '%s');" % (row[0], row[1])
@@ -61,7 +62,7 @@ def alimentar():
 
     #definimos la funcion que alimenta la tabla composicion
     def insert_composicion():
-        with open('../python/results/composicion.csv', newline='',  encoding="utf8") as csvfile:
+        with open('results/composicion.csv', newline='',  encoding="utf8") as csvfile:
             spamreader = csv.reader(csvfile)
             for row in spamreader:
                 sql = "INSERT INTO composicion (composition_id, influencer_id) VALUES ('%s', '%s');" % (row[0], row[1])
@@ -76,7 +77,7 @@ def alimentar():
 
     #definimos la funcion que alimenta la tabla mueble_composicion
     def insert_mueble_composicion():
-        with open('../python/results/comp_muebles.csv', newline='',  encoding="utf8") as csvfile:
+        with open('results/comp_muebles.csv', newline='',  encoding="utf8") as csvfile:
             spamreader = csv.reader(csvfile)
             for row in spamreader:
                 sql = "INSERT INTO mueble_composicion (composition_id, product_id) VALUES ('%s', '%s');" % (row[0], row[1])
@@ -91,7 +92,7 @@ def alimentar():
 
     #definimos la funcion que alimenta la tabla muebles
     def insert_muebles():
-        with open('../python/results/muebles.csv', newline='',  encoding="utf8") as csvfile:
+        with open('results/muebles.csv', newline='',  encoding="utf8") as csvfile:
             spamreader = csv.reader(csvfile)
             for row in spamreader:
                 sql = "INSERT INTO muebles (product_id,product_name,category_id,price,link) VALUES ('%s', '%s','%s', '%s', '%s');" % (row[0], row[1], row[2], row[3], row[4])
@@ -106,7 +107,7 @@ def alimentar():
 
     #definimos la funcion que alimenta la tabla ventas
     def insert_ventas():
-        with open('../python/results/ventas.csv', newline='',  encoding="utf8") as csvfile:
+        with open('results/ventas.csv', newline='',  encoding="utf8") as csvfile:
             spamreader = csv.reader(csvfile)
             for row in spamreader:
                 sql = "INSERT INTO ventas (sales_id,customer_id,product_id, date, quantity) VALUES ('%s', '%s','%s', '%s', '%s');" % (row[0], row[1], row[2], row[3], row[4])

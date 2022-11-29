@@ -1,63 +1,50 @@
 version: '3.5'
 
 services:
-  srv-python:
-    build: ./python
-  
-    volumes:
-       - ikea:/python/results/
-  
-  postgres:
-    build: ./postgres
-  
-    volumes:
-       - ikea:/postgres/
-
   postgres:
     container_name: postgres_container
     image: postgres:12.1
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ikea2022}
-      POSTGRES_DB: ikea2022
-      PGDATA: /data/postgres
-    
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=ikea2022
+      - POSTGRES_DB=ikea2022
     volumes:
       - postgres:/data/postgres
-    
+      - "./sql/init.sql:/docker-entrypoint-initdb.d/init.sql"
     ports:
       - "5432:5432"
-
-    
     networks: 
       - postgres
-      
-    
     restart: unless-stopped
 
   pgadmin:
     container_name: pgadmin_container
     image: dpage/pgadmin4:4.16
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
-    
-    volumes:
-      - pgadmin:/root/.pgadmin
-
+      PGADMIN_DEFAULT_EMAIL: "pgadmin4@pgadmin.org"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
     ports:
-      - "${PGADMIN_PORT:-5050}:80"
-
+      - "80:80"
+    depends_on:
+      - postgres
+    links:
+      - "postgres:pgsql-server"
     networks:
       - postgres
 
-    restart: unless-stopped
-
+  srv-python:
+    build: ./python
+    restart: "no"
+    depends_on:
+      - postgres
+    networks:
+      - postgres
+    
 networks:
   postgres:
+    external: false
+    name: postgres
     driver: bridge
 
 volumes:
-  ikea:
   postgres:
-  pgadmin:
