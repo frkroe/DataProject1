@@ -1,4 +1,4 @@
-def ventas(v, df_compMueble, df_clientes, minq, maxq):
+def ventas(v, df_compMueble, df_clientes, minq, maxq, x):
     # Importaciones
     import pandas as pd
     import csv
@@ -23,5 +23,5 @@ def ventas(v, df_compMueble, df_clientes, minq, maxq):
                 if csv_file.tell() == 0:
                     writer.writerow(["sales_id", "customer_id", "product_id", "composition_id", "date", "quantity"])
                 writer.writerow(row)
-        time.sleep(0.5)
+        time.sleep(x)
     return df_ventas

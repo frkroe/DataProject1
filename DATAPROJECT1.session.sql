@@ -1,1 +1,1 @@
-select * from composicion;
+select * from mueble_composicion;

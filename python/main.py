@@ -6,7 +6,6 @@ from newtables.composicion import composicion
 from newtables.comp_mueble import compMueble
 from newtables.ventas import ventas
 import os
-#from tablas.crear_tablas import crear
 from tablas.alimentar_tablas import alimentar
 
 '''print("""
@@ -15,21 +14,28 @@ Bienvenidos a nuestro Data Project!
 Para poder enseñarte cosas chulas, necesitamos que rellenes los campos siguientes:
 """)'''
 
-n = 5
-v = 10
+n = 500
+v = 1000
 numCompCat = 3
 minItems = 2
 maxItems = 5
 minq = 1
 maxq = 3
+x = 1
 
-'''n = int(input("Dime el número de clientes: "))
+'''
+print("""
+***********************************
+Bienvenidos a nuestro Data Project!
+Para poder enseñarte cosas chulas, necesitamos que rellenes los campos siguientes:""")
+n = int(input("Dime el número de clientes: "))
 v = int(input("Dime el número de ventas: "))
 numCompCat = int(input("Dime el número de composiciones por cada categoría: "))
 minItems = int(input("Dime la cantidad mínima de productos que tiene que salir en una composición: "))
 maxItems = int(input("Dime la cantidad máxima de productos que tiene que salir en una composición: "))
 minq = int(input("Dime la cantidad mínima de un producto comprado: "))
-maxq = int(input("Dime la cantidad máxima de  un producto comprado: "))'''
+maxq = int(input("Dime la cantidad máxima de  un producto comprado: "))
+x = int(input("Dime cuantos segundos hay que esperar entre cada venta: "))'''
 
 
 #Creamos un nuevo directorio results
@@ -52,9 +58,9 @@ df_composicion.to_csv('results/composicion.csv', index=False)
 # Dataframes "dinámicos" (en bucle)
 # Ojo: df_clientes y df_ventas se crea dinámicamente, por lo tanto se crea los csv's en sus archivos 
 df_clientes = clientes(n)
-df_ventas = ventas(v, df_compMueble, df_clientes, minq, maxq)
+df_ventas = ventas(v, df_compMueble, df_clientes, minq, maxq, x)
 
-#crear()
+#alimentamos las tablas en postgres con los datos creados en los csv's
 alimentar()
 
 #comprobamos los dataframes

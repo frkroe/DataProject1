@@ -22,8 +22,9 @@ def compMueble(df_muebles, numCompCat, minItems, maxItems):
 
     #creamos dataframe con un valor por cada celda (iterando por la lista de items)
     df_compMueble = pd.DataFrame(columns= ["composition_id", "product_id"])
-    for i, (k, v) in enumerate(dictCompListaItems.items()):
-        for e in enumerate(v):
-            df_compMueble.loc[i] = [k, e[1]]
+    for  k, v in dictCompListaItems.items():
+        for i in enumerate(v):
+            df_dictionary = pd.DataFrame([{"composition_id": k, "product_id":i[1]}])
+            df_compMueble = pd.concat([df_compMueble, df_dictionary], ignore_index=True)
     #print(df_compMueble)
     return df_compMueble
