@@ -1,0 +1,2 @@
+# SQL
+This folder contains the sql-file whose objective is to create data tables in postgres based on the ETL-processed data in the [python](https://github.com/frkroe/DataProject1/tree/main/python) folder.

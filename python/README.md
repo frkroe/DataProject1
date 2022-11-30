@@ -3,25 +3,17 @@ This folder contains all python-files whose objective is to create data tables b
  
 ## Extract & Transform Data
 Each table has been created as dataframe in individual python-files:
-- Extraction and Transformation of raw data in the [rawtables](python\rawtables) folder:
+- Extraction and Transformation of raw data in the [rawtables](https://github.com/frkroe/DataProject1/tree/main/python/rawtables) folder:
     - client data
     - products data
     - influencers data
-- Creation of missing data in the [newtables](python\newtables) folder:
+- Creation of missing data in the [newtables](https://github.com/frkroe/DataProject1/tree/main/python/newtablesnewtables) folder:
     - composition data
     - sales data
     - data relating compositions with products
 
 ## Export Data as csv
-The dataframes have been exported as csv-files which can be found in the [results](python\results) folder.
+The dataframes have been exported as csv-files which can be found in the (with python created) [results](https://github.com/frkroe/DataProject1/tree/main/python/results) folder.
 
----------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------
-
-# POSTGRES = TABLAS
-This folder contains all python-files whose objective is to create SQL data tables in postgres based on the data that have been extracted and transformed in the [python](python) folder before. 
-
-The purposes of the python files are:
-- to establish a connection to posgres (*init.py*)
-- to create the SQL queries for the data tables (*crear_tablas.py*)
-- to fill the created tables with data (*alimentar_tablas.py*)
+## FILL TABLES IN POSTGRES
+This folder contains the python-file (*alimentar_tablas.py*) whose objective is to fill the SQL data tables in postgres with the data that have been extracted and transformed in the previously explained folders before.
