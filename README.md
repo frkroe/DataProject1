@@ -34,7 +34,7 @@ Fuentes:
        - postgres
        - pgadmin
        - srv-python
-   - Automaticamente se crea la base de datos **ikea2002** en PostgreSQL y se ejecuta el archivo main.py el cual crea las tablas de dicha base de datos y las    alimenta de forma automatica
+   - Automaticamente se crea la base de datos **ikea2022** en PostgreSQL y se ejecuta el archivo main.py el cual crea las tablas de dicha base de datos y las    alimenta de forma automatica
  2. Entrar en [pgAdmin](http://localhost:5050/browser) introduciendo:
    - User: pgadmin4@pgadmin.org
    - Password: admin

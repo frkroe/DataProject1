@@ -1,1 +1,1 @@
-select * from mueble_composicion;
+select * from ventas;
